@@ -49,6 +49,10 @@ module.exports = function(sequelize, Sequelize) {
  
  
     });
+
+    // User.associate = function(models) {
+        
+    // }
  
     return User;
  
