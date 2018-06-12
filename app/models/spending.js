@@ -1,9 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    var Calorie = sequelize.define("Calorie", {
-        amount: {
+    var Spending = sequelize.define("Spending", {
+        amount: { 
             type: DataTypes.INT,
             allowNull: false
+        },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         }
+
     },
     {
         classMethods: {
