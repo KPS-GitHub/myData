@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Spending = sequelize.define("Spending", {
         amount: { 
-            type: DataTypes.INT,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         category: {
@@ -12,16 +12,15 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
 
-    },
-    {
-        classMethods: {
-            associate: function(models) {
-                Calorie.belongsto(models.User, {
-                    foreignKey: {
-                        allowNull: false
-                    }
-                });
-            }
-        }
     });
+
+    Spending.associate(function(models) {
+        Spending.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    });
+
+    return Spending;
 };
