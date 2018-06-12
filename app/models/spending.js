@@ -14,13 +14,13 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    Spending.associate(function(models) {
+    Spending.associate = function(models) {
         Spending.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
-    });
+    };
 
     return Spending;
 };
