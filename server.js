@@ -29,6 +29,8 @@ app.use(session({ secret: "secrets save", resave: true, saveUninitialized: true}
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
+// static directory
+app.use(express.static("public"));
 
 //For Handlebars
 app.set('views', './app/views')
