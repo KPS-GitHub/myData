@@ -5,15 +5,15 @@ module.exports = function(app) {
 
     function loggedIn(req,res) {
 
-        if (req.user) {
-            app.get("/", function(req,res) {
+        app.get("/", function(req,res) {
+            if (req.user) {
                 res.sendFile(path.join(__dirname, "../../public/home.html"));
-            });
-        } else {
-            app.get("/", function(req, res) {
+            } else {
                 res.render('signin');
-            });
-        }  
+            }
+        });
+
+ 
 
         // app.get("/calories", function(req,res) {
         //     res.sendFile(path.join(__dirname, "../../public/calories.html"));
