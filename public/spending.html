@@ -35,17 +35,20 @@
         </nav>
 
     <!-- main content window -->
-	<div class="container">
-		<div class="row">
-            <div class="col-lg-4">
 
-            </div>
-            <div class="col-lg-4 text-center">
-                <h2>mySpending</h2>
-            </div>
+    <div class="row">
+        <div class="col-lg-4">
+
         </div>
+        <div class="col-lg-4 text-center">
+            <h2>mySpending</h2>
+        </div>
+    </div>
+
+	<div class="container">
+
         <!-- data graphics will go here -->
-        <div id="spendingVisual" class="row">
+        <div id="spendingVisuals" class="row">
             <div id="spendingTable" class="col-lg-6">
 
             </div>
@@ -53,6 +56,25 @@
 
             </div>
         </div>
+
+        <!-- form for manipulating spending data -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-center">Add a Purchase</h4>
+                <form id="spending">
+                    <div class="form-group">
+                        <label for="dollars">Dollars Spent:</label>
+                        <input placeholder="Dollars Spent" type="text" class="form-control" id="dollars">
+                        <br />
+                        <label for="category">Category:</label>
+                        <input placeholder="Spending Category" type="text" class="form-control" id="category">
+                        <br />
+                        <button type="submit" class="btn btn-success submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
 	</div>
     <!-- Custom Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
