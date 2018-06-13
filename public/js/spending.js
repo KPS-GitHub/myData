@@ -31,8 +31,8 @@ function handleFormSubmit(event) {
 }
 
 // Submits a new purchase
-function submitPost(post) {
-    $.post("/api/posts", post);
+function submitPurchase(purchase) {
+    $.post("/api/spending", purchase);
 }
 
 
