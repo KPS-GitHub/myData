@@ -12,7 +12,7 @@ module.exports = function(app) {
     // });
 
     app.get("/spending", function(req,res) {
-        res.sendFile(path.join(__dirname, "../../public/spending"));
+        res.sendFile(path.join(__dirname, "../../public/spending.html"));
     });
 
 }
