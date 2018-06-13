@@ -12,7 +12,7 @@ module.exports = function(app) {
                 res.render('signin');
             }
         });
-
+    }
  
 
         // app.get("/calories", function(req,res) {
@@ -23,6 +23,6 @@ module.exports = function(app) {
             res.sendFile(path.join(__dirname, "../../public/spending.html"));
         });
 
-    }
+    
 
 }
