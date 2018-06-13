@@ -9,8 +9,16 @@ modules.exports = function(app) {
         });
     });
 
-    // later on, add route for getting spending data based on category
-
+    // GET route for getting spending data based on category
+    app.get("/api/spending/:category", function(req, res) {
+        db.Spending.findAll({
+            where: {
+                category: req.params.category
+            }
+        }).then(function(dbSpending) {
+            res.json(dbSpending);
+        });
+    });
 
     // POST route for saving a new entry
     app.post("/api/spending", function(req, res) {
