@@ -1,6 +1,8 @@
 var path = require("path");
 
-modules.exports = function(app) {
+var db = require("../models");
+
+module.exports = function(app) {
 
     // GET route for getting all Spending info
     app.get("/api/spending", function(req, res) {

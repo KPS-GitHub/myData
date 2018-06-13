@@ -1,18 +1,28 @@
 var path = require("path");
-
+var db = require("../models");
 
 module.exports = function(app) {
 
-    app.get("/", function(req,res) {
-        res.sendFile(path.join(__dirname, "../../public/home.html"));
-    });
+    function loggedIn(req,res) {
 
-    // app.get("/calories", function(req,res) {
-    //     res.sendFile(path.join(__dirname, "../../public/calories.html"));
-    // });
+        if (req.user) {
+            app.get("/", function(req,res) {
+                res.sendFile(path.join(__dirname, "../../public/home.html"));
+            });
+        } else {
+            app.get("/", function(req, res) {
+                res.render('signin');
+            });
+        }  
 
-    app.get("/spending", function(req,res) {
-        res.sendFile(path.join(__dirname, "../../public/spending.html"));
-    });
+        // app.get("/calories", function(req,res) {
+        //     res.sendFile(path.join(__dirname, "../../public/calories.html"));
+        // });
+
+        app.get("/spending", function(req,res) {
+            res.sendFile(path.join(__dirname, "../../public/spending.html"));
+        });
+
+    }
 
 }
