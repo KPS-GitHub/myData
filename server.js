@@ -4,7 +4,6 @@ var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').load();
-var exphbs = require('express-handlebars');
 
 
 var PORT = process.env.PORT || 8080;
@@ -31,13 +30,6 @@ app.use(passport.session()); // persistent login sessions
 
 // static directory
 app.use(express.static("public"));
-
-//For Handlebars
-app.set('views', './app/views')
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
 
 
 // Routes

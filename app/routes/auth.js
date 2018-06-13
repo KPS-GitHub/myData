@@ -1,4 +1,6 @@
- module.exports = function(app, passport) {
+var path = require('path');
+
+module.exports = function(app, passport) {
  
     app.get('/signup', function(req,res) {
         res.sendFile(path.join(__dirname, "../../public/signup.html"));           
