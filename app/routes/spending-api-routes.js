@@ -4,6 +4,16 @@ var db = require("../models");
 
 module.exports = function(app) {
 
+    // test route
+    app.get("/api/user", function(req,res) {
+        if (req.user) {
+            // user id is req.user.id
+            res.json(req.user);
+        } else {
+            res.end();
+        }
+    }); 
+
     // GET route for getting all Spending info
     app.get("/api/spending", function(req, res) {
         db.Spending.findAll().then(function(dbSpending) {

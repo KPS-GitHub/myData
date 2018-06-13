@@ -12,6 +12,13 @@ $(spendingForm).on("submit", handleFormSubmit);
 function handleFormSubmit(event) {
     event.preventDefault();
 
+    // get user id to attach to purchase object
+    var userID;
+    $.get("/api/user", function(userObj) {
+        console.log("user object i'm hoping to pull: " + userObj);
+        userID = userObj.id;
+    });
+
     // Wont submit the purchase if we are missing an amount or category
     if (!spendingAmount.val().trim() || !spendingCategory.val().trim()) {
         console.log("spendingAmount input: " + spendingAmount.val().trim());
@@ -26,7 +33,8 @@ function handleFormSubmit(event) {
         .trim(),
       category: spendingCategory
         .val()
-        .trim()
+        .trim(),
+      UserId: userID
     };
 
     // clear input fields after submission and inputs have been used
@@ -38,11 +46,20 @@ function handleFormSubmit(event) {
     
 }
 
+
+
 // Submits a new purchase
 function submitPurchase(purchase) {
     $.post("/api/spending", purchase);
     console.log(purchase);
 }
 
+
+// getting user id to attach to spending post
+// function getUserId() {
+//     $.get("/api/user", function(userObj) {
+//         userID = userObj.id;
+//     });
+// }
 
 }); //end of docready
