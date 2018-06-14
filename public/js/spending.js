@@ -12,43 +12,64 @@ $(spendingForm).on("submit", handleFormSubmit);
 function handleFormSubmit(event) {
     event.preventDefault();
 
-    // get user id to attach to purchase object
-    var userID;
-    $.get("/api/user", function(userObj) {
+    // // get user id to attach to purchase object
+    // var userID;
+    // $.get("/api/user", function(userObj) {
+    //     console.log("user object i'm hoping to pull: " + JSON.stringify(userObj));
+    //     userID = JSON.parse(JSON.stringify(userObj)).id;
+    //     console.log("userID: " + userID);
+    //     // userID is correct here, but never makes it to the newPurchase object
+    // });
+
+
+    $.get("/api/user").then(function(userObj) {
         console.log("user object i'm hoping to pull: " + JSON.stringify(userObj));
+        // get user id to attach to purchase object
+        var userID;
+        var newPurchase;
         userID = JSON.parse(JSON.stringify(userObj)).id;
         console.log("userID: " + userID);
-        // userID is correct here, but never makes it to the newPurchase object
+        // Constructing a newPurchase object to hand to the database
+        console.log("userID at beginning of newPurchase obj: " + userID);
+        newPurchase = {
+        amount: spendingAmount
+            .val()
+            .trim(),
+        category: spendingCategory
+            .val()
+            .trim(),
+        UserId: userID
+        };
+
+        // Wont submit the purchase if we are missing an amount or category
+        if (!spendingAmount.val().trim() || !spendingCategory.val().trim()) {
+            console.log("spendingAmount input: " + spendingAmount.val().trim());
+            console.log("spendingCategory input: " + spendingCategory.val().trim());
+            console.log("an amount and/or category was not provided");
+            return;
+        }
+
+        submitPurchase(newPurchase);
+
+        // clear input fields after submission and inputs have been used
+        // $("#dollars").val("");
+        // $("#category").val("");
     });
 
-    // Wont submit the purchase if we are missing an amount or category
-    if (!spendingAmount.val().trim() || !spendingCategory.val().trim()) {
-        console.log("spendingAmount input: " + spendingAmount.val().trim());
-        console.log("spendingCategory input: " + spendingCategory.val().trim());
-        console.log("an amount and/or category was not provided");
-        return;
-    }
-    // Constructing a newPurchase object to hand to the database
-    console.log("userID at beginning of newPurchase obj: " + userID);
-    var newPurchase = {
-      amount: spendingAmount
-        .val()
-        .trim(),
-      category: spendingCategory
-        .val()
-        .trim(),
-      UserId: userID
-    };
 
-    // clear input fields after submission and inputs have been used
-    $("#dollars").val("");
-    $("#category").val("");
-
-
-    submitPurchase(newPurchase);
+    // // Constructing a newPurchase object to hand to the database
+    // console.log("userID at beginning of newPurchase obj: " + userID);
+    // var newPurchase = {
+    //   amount: spendingAmount
+    //     .val()
+    //     .trim(),
+    //   category: spendingCategory
+    //     .val()
+    //     .trim(),
+    //   UserId: userID
+    // };
     
 }
-
 
 
 // Submits a new purchase
@@ -56,6 +77,7 @@ function submitPurchase(purchase) {
     $.post("/api/spending", purchase);
     console.log(purchase);
 }
+
 
 
 // getting user id to attach to spending post
