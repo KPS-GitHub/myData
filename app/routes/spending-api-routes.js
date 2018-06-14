@@ -32,6 +32,17 @@ module.exports = function(app) {
         });
     });
 
+    // GET route for getting spending data by user id
+    app.get("/api/spending/:UserId", function(req, res) {
+        db.Spending.findAll({
+            where: {
+                category: req.params.UserId
+            }
+        }).then(function(dbSpending) {
+            res.json(dbSpending);
+        });
+    });
+
     // POST route for saving a new entry
     app.post("/api/spending", function(req, res) {
         db.Spending.create(req.body).then(function(dbSpending) {

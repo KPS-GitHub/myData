@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+// THIS SECTION LOADS THE INITIAL DATA SET AND DISPLAYS IT
+
+
+
+// ALL CODE BELOW HANDLES SUBMITTING A NEW DATA ENTRY
+
 // getting jquery references for inputs
 var spendingAmount = $("#dollars");
 var spendingCategory = $("#category");
@@ -55,19 +61,6 @@ function handleFormSubmit(event) {
         $("#dollars").val("");
         $("#category").val("");
     });
-
-
-    // // Constructing a newPurchase object to hand to the database
-    // console.log("userID at beginning of newPurchase obj: " + userID);
-    // var newPurchase = {
-    //   amount: spendingAmount
-    //     .val()
-    //     .trim(),
-    //   category: spendingCategory
-    //     .val()
-    //     .trim(),
-    //   UserId: userID
-    // };
     
 }
 
@@ -78,13 +71,5 @@ function submitPurchase(purchase) {
     console.log(purchase);
 }
 
-
-
-// getting user id to attach to spending post
-// function getUserId() {
-//     $.get("/api/user", function(userObj) {
-//         userID = userObj.id;
-//     });
-// }
 
 }); //end of docready
