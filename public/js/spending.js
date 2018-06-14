@@ -52,8 +52,8 @@ function handleFormSubmit(event) {
         submitPurchase(newPurchase);
 
         // clear input fields after submission and inputs have been used
-        // $("#dollars").val("");
-        // $("#category").val("");
+        $("#dollars").val("");
+        $("#category").val("");
     });
 
 
