@@ -2,8 +2,12 @@
 
 $(document).ready(function() {
 
-// THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT
+// THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT IN THE TABLE THAT IS HARD-CODED IN THE HTML FILE
+
 var userID;
+var userPurchasesArray = [];
+
+
 function tableData() {
 $.get("/api/user").then(function(userObj) {
     var userID = JSON.parse(JSON.stringify(userObj)).id;
@@ -14,6 +18,9 @@ $.get("/api/user").then(function(userObj) {
         console.log("userID: " + userID);
         $.get("/api/spending/UserId/" + userID).then(function(data) {
             console.log("current user's spending data: ", data);
+            for (var i = 0; i < data.length; i++) {
+                userPurchasesArray.push(data[i].amount);
+            }
             var j = 1;
             for (var i = data.length; i > -1; i--) {
                 $("#amount" + j).text(data[i-1].amount);
@@ -26,6 +33,9 @@ $.get("/api/user").then(function(userObj) {
 }
 
 tableData();
+
+
+// use the userPurchasesArray, that is now full of all of the purchase amounts, to make a graph via simple-data-vis package
 
 
 // ALL CODE BELOW HANDLES SUBMITTING A NEW DATA ENTRY
@@ -92,6 +102,10 @@ function submitPurchase(purchase) {
         location.reload();
     });
 }
+
+
+
+
 
 
 }); //end of docready
