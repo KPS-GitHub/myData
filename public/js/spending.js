@@ -1,19 +1,23 @@
-var dataVis = require("simpe-data-vis");
+// var dataVis = require("simple-data-vis");
 
 $(document).ready(function() {
 
 // THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT
+var userID;
 $.get("/api/user").then(function(userObj) {
     var userID = JSON.parse(JSON.stringify(userObj)).id;
     getUserSpending(userID);
 });
 
 function getUserSpending(userID) {
-    $.get("/api/spending/" + userID).then(function(data) {
-        console.log("current user's spending data: " + data);
-        // for (var i = 0; i < data.length; i++) {
-
-        // }
+    console.log("userID: " + userID);
+    $.get("/api/spending/UserId/" + userID).then(function(data) {
+        console.log("current user's spending data: ", data);
+        for (var i = 0; i < 5; i++) {
+            $("#amount" + (i+1)).text(data[i].amount);
+            $("#category" + (i+1)).text(data[i].category);
+            $("#date" + (i+1)).text(data[i].createdAt);
+        }
     });
 }
 

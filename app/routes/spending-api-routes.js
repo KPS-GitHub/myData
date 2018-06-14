@@ -22,7 +22,7 @@ module.exports = function(app) {
     });
 
     // GET route for getting spending data based on category
-    app.get("/api/spending/:category", function(req, res) {
+    app.get("/api/spending/category/:category", function(req, res) {
         db.Spending.findAll({
             where: {
                 category: req.params.category
@@ -33,10 +33,10 @@ module.exports = function(app) {
     });
 
     // GET route for getting spending data by user id
-    app.get("/api/spending/:UserId", function(req, res) {
+    app.get("/api/spending/UserId/:UserId", function(req, res) {
         db.Spending.findAll({
             where: {
-                category: req.params.UserId
+                UserId: req.params.UserId
             }
         }).then(function(dbSpending) {
             res.json(dbSpending);
