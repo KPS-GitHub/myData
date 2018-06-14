@@ -4,22 +4,28 @@ $(document).ready(function() {
 
 // THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT
 var userID;
+function tableData() {
 $.get("/api/user").then(function(userObj) {
     var userID = JSON.parse(JSON.stringify(userObj)).id;
     getUserSpending(userID);
 });
 
-function getUserSpending(userID) {
-    console.log("userID: " + userID);
-    $.get("/api/spending/UserId/" + userID).then(function(data) {
-        console.log("current user's spending data: ", data);
-        for (var i = 0; i < 5; i++) {
-            $("#amount" + (i+1)).text(data[i].amount);
-            $("#category" + (i+1)).text(data[i].category);
-            $("#date" + (i+1)).text(data[i].createdAt);
-        }
-    });
+    function getUserSpending(userID) {
+        console.log("userID: " + userID);
+        $.get("/api/spending/UserId/" + userID).then(function(data) {
+            console.log("current user's spending data: ", data);
+            var j = 1;
+            for (var i = data.length; i > -1; i--) {
+                $("#amount" + j).text(data[i-1].amount);
+                $("#category" + j).text(data[i-1].category);
+                $("#date" + j).text(data[i-1].createdAt);
+                j++;
+            }
+        });
+    }
 }
+
+tableData();
 
 
 // ALL CODE BELOW HANDLES SUBMITTING A NEW DATA ENTRY
@@ -82,7 +88,9 @@ function handleFormSubmit(event) {
 
 // Submits a new purchase
 function submitPurchase(purchase) {
-    $.post("/api/spending", purchase);
+    $.post("/api/spending", purchase).then(function() {
+        location.reload();
+    });
 }
 
 
