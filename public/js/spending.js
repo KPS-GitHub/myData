@@ -23,7 +23,7 @@ $.get("/api/user").then(function(userObj) {
             }
             var j = 1;
             for (var i = data.length; i > -1; i--) {
-                $("#amount" + j).text(data[i-1].amount);
+                $("#amount" + j).text("$" + data[i-1].amount);
                 $("#category" + j).text(data[i-1].category);
                 $("#date" + j).text(data[i-1].createdAt);
                 j++;
@@ -51,15 +51,6 @@ $(spendingForm).on("submit", handleFormSubmit);
 // A function for handling what happens when the form to create a new post is submitted
 function handleFormSubmit(event) {
     event.preventDefault();
-
-    // // get user id to attach to purchase object
-    // var userID;
-    // $.get("/api/user", function(userObj) {
-    //     console.log("user object i'm hoping to pull: " + JSON.stringify(userObj));
-    //     userID = JSON.parse(JSON.stringify(userObj)).id;
-    //     console.log("userID: " + userID);
-    //     // userID is correct here, but never makes it to the newPurchase object
-    // });
 
 
     $.get("/api/user").then(function(userObj) {
