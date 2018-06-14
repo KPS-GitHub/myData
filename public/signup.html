@@ -2,21 +2,52 @@
 <html>
  
 <head>
-    <title>Signup</title>
+    <meta charset="UTF-8">
+	<title>Sign Up</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/styles.css" media="screen" title="no title">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
  
 <body>
-    <form id="signup" name="signup" method="post" action="/signup">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
-    </form>
+
+    <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <!-- spacer column -->
+            <div class="col-lg-5">
+
+            </div>
+            
+            <div class="col-lg-4">
+                <form id="signup" name="signup" method="post" action="/signup">
+                    <!-- <label for="email">Email Address</label> -->
+                    <input class="text-center" name="email" type="email" placeholder="Email Address"/>
+                    <br>
+                    <!-- <label for="firstname">Firstname</label> -->
+                    <input class="text-center" name="firstname" type="text" placeholder="First Name" />
+                    <br>
+                    <!-- <label for="lastname">Lastname</label> -->
+                    <input class="text-center" name="lastname" type="text" placeholder="Last Name" />
+                    <br>
+                    <!-- <label for="password">Password</label> -->
+                    <input class="text-center" name="password" type="password" placeholder="Password" />
+                    <br>
+                    <input id="authSubmit" class="btn text-center" type="submit" value="Sign Up" />
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="text-center">Already have an account? <a href="/signin">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
  
 </body>
  

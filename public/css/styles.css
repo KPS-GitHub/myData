@@ -1,8 +1,8 @@
-#spendingVisuals {
-    height: 40vh;
+#authSubmit {
+    position: relative;
+    left: 2.8em;
 }
 
 #spendingRow {
     height: 8vh;
 }
-
