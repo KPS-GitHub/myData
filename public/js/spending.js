@@ -1,7 +1,21 @@
+var dataVis = require("simpe-data-vis");
+
 $(document).ready(function() {
 
-// THIS SECTION LOADS THE INITIAL DATA SET AND DISPLAYS IT
+// THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT
+$.get("/api/user").then(function(userObj) {
+    var userID = JSON.parse(JSON.stringify(userObj)).id;
+    getUserSpending(userID);
+});
 
+function getUserSpending(userID) {
+    $.get("/api/spending/" + userID).then(function(data) {
+        console.log("current user's spending data: " + data);
+        // for (var i = 0; i < data.length; i++) {
+
+        // }
+    });
+}
 
 
 // ALL CODE BELOW HANDLES SUBMITTING A NEW DATA ENTRY
@@ -29,14 +43,11 @@ function handleFormSubmit(event) {
 
 
     $.get("/api/user").then(function(userObj) {
-        console.log("user object i'm hoping to pull: " + JSON.stringify(userObj));
         // get user id to attach to purchase object
         var userID;
         var newPurchase;
         userID = JSON.parse(JSON.stringify(userObj)).id;
-        console.log("userID: " + userID);
         // Constructing a newPurchase object to hand to the database
-        console.log("userID at beginning of newPurchase obj: " + userID);
         newPurchase = {
         amount: spendingAmount
             .val()
@@ -68,7 +79,6 @@ function handleFormSubmit(event) {
 // Submits a new purchase
 function submitPurchase(purchase) {
     $.post("/api/spending", purchase);
-    console.log(purchase);
 }
 
 
