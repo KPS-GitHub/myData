@@ -4,7 +4,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-    // test route
+    // user info route
     app.get("/api/user", function(req,res) {
         if (req.user) {
             // user id is req.user.id

@@ -15,8 +15,10 @@ function handleFormSubmit(event) {
     // get user id to attach to purchase object
     var userID;
     $.get("/api/user", function(userObj) {
-        console.log("user object i'm hoping to pull: " + userObj);
-        userID = userObj.id;
+        console.log("user object i'm hoping to pull: " + JSON.stringify(userObj));
+        userID = JSON.parse(JSON.stringify(userObj)).id;
+        console.log("userID: " + userID);
+        // userID is correct here, but never makes it to the newPurchase object
     });
 
     // Wont submit the purchase if we are missing an amount or category
@@ -27,6 +29,7 @@ function handleFormSubmit(event) {
         return;
     }
     // Constructing a newPurchase object to hand to the database
+    console.log("userID at beginning of newPurchase obj: " + userID);
     var newPurchase = {
       amount: spendingAmount
         .val()
