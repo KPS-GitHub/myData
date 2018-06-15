@@ -8,7 +8,10 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="./css/styles.css" media="screen" title="no title">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- vis - data visualization npm package -->
+    <!-- <script src="webroot/vis/dist/vis.js"></script> 
+    <link href="webroot/vis/dist/vis.css" rel="stylesheet" type="text/css" /> -->
 </head>
 
 <body>
@@ -48,11 +51,11 @@
 
     <hr>
 
-	<div class="container">
+	<div id="main" class="container">
 
         <!-- data graphics will go here -->
         <div id="spendingVisuals" class="row">
-            <div id="spendingTable" class="col-lg-12">
+            <div id="spendingTable" class="col-lg-6">
                 <h4>Most Recent Purchases</h4>
                 <table style="width:100%">
                     <tr>
@@ -112,9 +115,10 @@
                     </tr>
                 </table>
             </div>
-            <!-- <div id="spendingGraphic" class="col-lg-6">
-
-            </div> -->
+            <div id="spendingGraphic" class="col-lg-6">
+                <!-- placeholder pic until I get vis working -->
+                <img src="http://phplot.sourceforge.net/phplotdocs/examples/qs1.png" alt="graph placeholder image" height="400px" width="400px">
+            </div>
         </div>
 
         <br>
@@ -137,13 +141,17 @@
                 </form>
             </div>
         </div>
+
+        <hr>
+
+        <p><a href="/signin">Sign In</a> | 
+        <a href="/signup">Sign Up</a></p>
         
 	</div>
     <!-- Custom Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="js/spending.js" type="text/javascript"></script>
-    <!-- <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="simpledatavis.js"></script> -->
+
 </body>
 
 </html>

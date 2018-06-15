@@ -1,5 +1,3 @@
-// var dataVis = require("simple-data-vis");
-
 $(document).ready(function() {
 
 // THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT IN THE TABLE THAT IS HARD-CODED IN THE HTML FILE
@@ -19,7 +17,8 @@ $.get("/api/user").then(function(userObj) {
         $.get("/api/spending/UserId/" + userID).then(function(data) {
             console.log("current user's spending data: ", data);
             for (var i = 0; i < data.length; i++) {
-                userPurchasesArray.push(data[i].amount);
+                var purchaseObject = {"amount": data[i].amount};
+                userPurchasesArray.push(purchaseObject);
             }
             var j = 1;
             for (var i = data.length; i > -1; i--) {
@@ -34,9 +33,19 @@ $.get("/api/user").then(function(userObj) {
 
 tableData();
 
-
-// use the userPurchasesArray, that is now full of all of the purchase amounts, to make a graph via simple-data-vis package
-
+console.log(userPurchasesArray);
+// use the userPurchasesArray, that is now full of all of the purchase amounts, to make a graph via vis package
+var container = document.getElementById('spendingGraphic');
+var data = [
+  {id: 1, content: 'item 1', start: '2013-04-20'},
+  {id: 2, content: 'item 2', start: '2013-04-14'},
+  {id: 3, content: 'item 3', start: '2013-04-18'},
+  {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+  {id: 5, content: 'item 5', start: '2013-04-25'},
+  {id: 6, content: 'item 6', start: '2013-04-27'}
+];
+var options = {};
+var timeline = new vis.Timeline(container, data, options);
 
 // ALL CODE BELOW HANDLES SUBMITTING A NEW DATA ENTRY
 

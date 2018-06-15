@@ -30,6 +30,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.37.10",
-    "simple-data-vis": "^0.3.0"
+    "simple-data-vis": "^0.3.0",
+    "vis": "^4.21.0"
   }
 }

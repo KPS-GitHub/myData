@@ -6,3 +6,20 @@
 #spendingRow {
     height: 8vh;
 }
+
+/* animations */
+
+@keyframes backFade {
+    0%   {background-color: #ecf0f1;}
+    50%  {background-color: #18BC9C;}
+    100%   {background-color: #ecf0f1;}
+
+}
+
+/* The element to apply the animation to */
+.navbar {
+    background-color: #ecf0f1;
+    animation-name: backFade;
+    animation-duration: 10s;
+    animation-iteration-count: 10;
+}
