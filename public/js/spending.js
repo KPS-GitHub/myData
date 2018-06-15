@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+
+// logout button
+$("#logout").on("click", function() {
+    $.get("/logout");
+});
+
 // THIS SECTION LOADS THE CUURENT DATA SET AND DISPLAYS IT IN THE TABLE THAT IS HARD-CODED IN THE HTML FILE
 
 var userID;
@@ -102,6 +108,7 @@ function submitPurchase(purchase) {
         location.reload();
     });
 }
+
 
 
 
