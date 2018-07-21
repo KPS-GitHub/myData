@@ -1,2 +1,3 @@
 # myData
-DU Web Dev Bootcamp Project 2 - myData is a simple web app where users can make an account, then generate pages where they can enter, edit, and delete whichever data is relevant to that page (ex: tracking money spent on eating out or tracking caloric intake)
+myData is a simple web app where users can make an account, then track various quantatative aspects of their lives that people generally are interested in keeping track of (ex: tracking money spent on various vices like coffee/eating out, tracking caloric intake, general notes, etc.)
+NOTE: Currently, this project is a bare-bones spending tracker page. The project was slightly expanded upon in my myDataReact project where I was able to create a spending tracker that is able to track data by category and put each category of spending as a line on a line graph. Any further expansion on the myData project will be found there.
